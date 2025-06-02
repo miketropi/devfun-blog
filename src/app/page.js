@@ -1,6 +1,7 @@
 import Layout from './components/Layout';
 import Hero from './components/Hero';
 import ArticleList from './components/ArticleList';
+import Pagination from './components/Pagination';
 
 async function fetchPosts(page = 1, perPage = 3) {
   const calcReadTime = (content) => {
@@ -61,9 +62,11 @@ async function fetchPosts(page = 1, perPage = 3) {
   }
 }
 
-export default async function Home() {
-  const { posts, pagination } = await fetchPosts();
-  console.log(posts)
+export default async function Home({ searchParams }) {
+  const { page } = await searchParams;
+  const perPage = 5; 
+  const { posts, pagination } = await fetchPosts(page, perPage);
+  
   return (
     <Layout>
       <Hero 
@@ -71,6 +74,8 @@ export default async function Home() {
         subtitle="Discover modern web development techniques, best practices, and the latest trends in technology."
       />
       <ArticleList posts={ posts } />
+      <Pagination {...pagination} />
+      <div className="pb-6"></div>
     </Layout>
   );
 }

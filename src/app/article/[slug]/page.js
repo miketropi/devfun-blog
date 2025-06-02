@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import Layout from '../../components/Layout';
 import Hero from '../../components/Hero';
-import Image from 'next/image';
 
 async function fetchPostBySlug(slug) {
   const calcReadTime = (content) => {
@@ -56,7 +55,7 @@ async function fetchPostBySlug(slug) {
 }
 
 export async function generateMetadata({ params }) {
-  const slug = params.slug;
+  const { slug } = await params;
   const post = await fetchPostBySlug(slug);
   
   if (!post) {
@@ -83,7 +82,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ArticlePage({ params }) {
-  const slug = params.slug;
+  const { slug } = await params;
   const post = await fetchPostBySlug(slug);
   
   if (!post) {
@@ -95,7 +94,7 @@ export default async function ArticlePage({ params }) {
       <div className="bg-gradient-to-b from-[var(--card-bg)] to-transparent pt-8 pb-16">
         <Hero 
           title={post.title}
-          subtitle={`${post.date} · ${post.readTime}`}
+          // subtitle={`${post.date} · ${post.readTime}`}
         />
         
         <main className="max-w-4xl mx-auto px-4 sm:px-6">
