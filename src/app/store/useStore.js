@@ -5,12 +5,17 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 // Create a store with Zustand, Immer, and persist middleware
 const useStore = create(
   persist(
-    immer((set) => ({
+    immer((set, get) => ({
       // Blog state
       darkMode: false,
       posts: [],
       isLoading: false,
       error: null,
+      
+      // User state
+      user: null,
+      isAuthenticated: false,
+      token: null,
       
       // Actions
       toggleDarkMode: () => set((state) => {
@@ -47,6 +52,23 @@ const useStore = create(
       setError: (error) => set((state) => {
         state.error = error;
       }),
+      
+      // User authentication actions
+      login: (userData, token) => set((state) => {
+        state.user = userData;
+        state.token = token;
+        state.isAuthenticated = true;
+      }),
+      
+      logout: () => set((state) => {
+        state.user = null;
+        state.token = null;
+        state.isAuthenticated = false;
+      }),
+      
+      updateUser: (userData) => set((state) => {
+        state.user = { ...state.user, ...userData };
+      }),
     })
   ),
   {
@@ -55,8 +77,13 @@ const useStore = create(
       // Use localStorage only on the client side
       return typeof window !== 'undefined' ? window.localStorage : null;
     }),
-    // Only persist the darkMode state
-    partialize: (state) => ({ darkMode: state.darkMode }),
+    // Persist darkMode and user authentication state
+    partialize: (state) => ({ 
+      darkMode: state.darkMode,
+      user: state.user,
+      token: state.token,
+      isAuthenticated: state.isAuthenticated
+    }),
     // Skip hydration to prevent mismatches between server and client
     // skipHydration: true,
   }

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import useDarkMode from '../hooks/useDarkMode';
+import { LoginButton } from './LoginModal';
 
 export default function Header() {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -17,7 +18,15 @@ export default function Header() {
             <nav className="flex space-x-4 sm:space-x-8 mr-4 sm:mr-6">
               <Link href="/" className="text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-200">Articles</Link>
               <Link href="/about" className="text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">About</Link>
+              {/* <Link href="/login-example" className="text-sm sm:text-base text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">Login Example</Link> */}
             </nav>
+            
+            {/* Login Button */}
+            <div className="mr-4">
+              <LoginButton className="text-sm sm:text-base px-3 py-1.5 rounded-md bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white transition-colors duration-200" />
+            </div>
+            
+            {/* Dark Mode Toggle */}
             <div className="relative">
               <button 
                 onClick={toggleDarkMode}

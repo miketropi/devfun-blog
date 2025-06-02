@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Layout from '../../components/Layout';
 import Hero from '../../components/Hero';
+import CommentForm from '../../components/CommentForm';
 
 async function fetchPostBySlug(slug) {
   const calcReadTime = (content) => {
@@ -155,6 +156,13 @@ export default async function ArticlePage({ params }) {
                 </button>
               </div>
             </div>
+          </div>
+          
+          {/* Comments section */}
+          <div className="mt-12 pt-8 border-t border-[var(--card-border)] max-w-4xl mx-auto">
+            <h2 className="text-2xl font-semibold mb-6">Comments</h2>
+            {/* @ts-expect-error Async Server Component */}
+            <CommentForm postId={post.id} />
           </div>
         </main>
       </div>
