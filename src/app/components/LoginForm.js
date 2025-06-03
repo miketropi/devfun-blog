@@ -107,8 +107,8 @@ export default function LoginForm() {
     setSubmitStatus(null);
     
     try {
-      // WordPress REST API JWT authentication endpoint
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}jwt-auth/v1/token`, {
+      // Use our local API endpoint instead of WordPress
+      const response = await fetch('/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -126,7 +126,8 @@ export default function LoginForm() {
       }
       
       // Store user data and token in the global store
-      login(data.user, data.token);
+      const { token, user } = data;
+      login(user, token);
       
       // Reset form and show success message
       setLoginData({
@@ -158,8 +159,8 @@ export default function LoginForm() {
     setSubmitStatus(null);
     
     try {
-      // WordPress REST API users endpoint
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-headless/v1/register`, {
+      // Use our local API endpoint instead of WordPress
+      const response = await fetch('/api/v1/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

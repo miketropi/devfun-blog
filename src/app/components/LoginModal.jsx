@@ -33,7 +33,7 @@ export const LoginButton = ({ children, className }) => {
   const logout = useStore((state) => state.logout);
 
   // If no custom children are provided, use default text
-  const buttonText = children || (isAuthenticated ? `Logout (${user?.username || 'User'})` : 'Login / Register');
+  const buttonText = children || (isAuthenticated ? `Logout (${user?.user_display_name || 'User'})` : 'Login / Register');
 
   const handleClick = () => {
     if (isAuthenticated) {
