@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import useDarkMode from '../hooks/useDarkMode';
+import useStore from '../store/useStore';
 
 export default function CommentForm({ postId }) {
   const { darkMode } = useDarkMode();
+  const { token } = useStore();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,6 +67,7 @@ export default function CommentForm({ postId }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token // Replace with your actual API key
         },
         body: JSON.stringify({
           post: postId,

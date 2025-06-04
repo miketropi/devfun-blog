@@ -33,16 +33,22 @@ export async function POST(request) {
         { status: 401 }
       );
     }
-
+    
     // Extract the token and user from the response
-    const { token, ...user } = await response.json();
-    cookies().set('token', token, {
-      httpOnly: true,
-      // secure: true, 
-      sameSite: 'lax', 
-      path: '/',
-      maxAge: 60 * 15, // 15 minutes
+    const res = await response.json();
+    const { token, refresh_token, ...user } = res;
+
+    // Set the token as a cookie
+    const cookieStore = cookies()
+    cookieStore.set('token', token, { 
+      httpOnly: true, 
+      maxAge: 60 * 2, // 2 minutes
     });
+
+    cookieStore.set('refreshToken', refresh_token, { 
+      httpOnly: true, 
+      maxAge: 60 * 60 * 24 * 30 // 30 days 
+    })
     
     // Return the user and token
     return NextResponse.json({ 
