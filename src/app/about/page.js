@@ -36,7 +36,7 @@ export default function About() {
               <p className="opacity-70 mb-4 text-sm">Founder & Lead Developer</p>
               <p className="opacity-80 text-sm sm:text-base">
                 Jane has over 10 years of experience in web development and has worked with companies 
-                like Google and Microsoft. She's passionate about creating intuitive user experiences 
+                like Google and Microsoft. She&#39;s passionate about creating intuitive user experiences 
                 and teaching others how to do the same.
               </p>
             </div>
@@ -57,7 +57,7 @@ export default function About() {
             <span className="inline-block">Contact Us</span>
           </h2>
           <p className="opacity-80 mb-6 leading-relaxed text-sm sm:text-base">
-            Have a question or suggestion? We'd love to hear from you! You can reach us at 
+            Have a question or suggestion? We&#39;d love to hear from you! You can reach us at 
             <a href="mailto:hello@devfun.blog" className="text-[var(--accent)] hover:text-[var(--accent-hover)] hover:underline ml-1 transition-colors duration-200">
               hello@devfun.blog
             </a>

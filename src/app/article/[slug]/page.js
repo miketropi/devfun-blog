@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Layout from '../../components/Layout';
 import Hero from '../../components/Hero';
 import CommentForm from '../../components/CommentForm';
+import Link from 'next/link';
 
 async function fetchPostBySlug(slug) {
   const calcReadTime = (content) => {
@@ -127,13 +128,13 @@ export default async function ArticlePage({ params }) {
           {/* Article footer */}
           <div className="mt-12 pt-8 border-t border-[var(--card-border)] max-w-4xl mx-auto">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <a href="/" className="inline-flex items-center text-[var(--accent)] hover:underline">
+              <Link href="/" className="inline-flex items-center text-[var(--accent)] hover:underline">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
                   <line x1="19" y1="12" x2="5" y2="12"/>
                   <polyline points="12 19 5 12 12 5"/>
                 </svg>
                 Back to all articles
-              </a>
+              </Link>
               
               <div className="flex gap-2">
                 <button className="p-2 rounded-full hover:bg-[var(--card-bg)] transition-colors" aria-label="Share on Twitter">
