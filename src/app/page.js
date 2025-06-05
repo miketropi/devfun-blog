@@ -68,7 +68,7 @@ export default async function Home({ searchParams }) {
   const { posts, pagination } = await fetchPosts(page, perPage);
   
   return (
-    <Layout>
+    <div>
       <Hero 
         title="Web Development Insights & Tutorials" 
         subtitle="Discover modern web development techniques, best practices, and the latest trends in technology."
@@ -76,6 +76,6 @@ export default async function Home({ searchParams }) {
       <ArticleList posts={ posts } />
       <Pagination {...pagination} />
       <div className="pb-6"></div>
-    </Layout>
+    </div>
   );
 }

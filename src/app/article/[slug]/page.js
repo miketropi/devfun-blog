@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import Layout from '../../components/Layout';
 import Hero from '../../components/Hero';
 import CommentForm from '../../components/CommentForm';
 import Link from 'next/link';
@@ -18,7 +17,10 @@ async function fetchPostBySlug(slug) {
   }
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}wp/v2/posts?slug=${slug}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}wp/v2/posts?slug=${slug}`, {
+      // next: { revalidate: 3600 },
+      cache: 'force-cache'
+    });
     
     if (!res.ok) {
       return null;
@@ -92,7 +94,7 @@ export default async function ArticlePage({ params }) {
   }
   
   return (
-    <Layout>
+    <div>
       <div className="bg-gradient-to-b from-[var(--card-bg)] to-transparent pt-8 pb-16">
         <Hero 
           title={post.title}
@@ -162,11 +164,10 @@ export default async function ArticlePage({ params }) {
           {/* Comments section */}
           <div className="mt-12 pt-8 border-t border-[var(--card-border)] max-w-4xl mx-auto">
             <h2 className="text-2xl font-semibold mb-6">Comments</h2>
-            {/* @ts-expect-error Async Server Component */}
             <CommentForm postId={post.id} />
           </div>
         </main>
       </div>
-    </Layout>
+    </div>
   );
 }

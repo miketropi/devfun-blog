@@ -107,7 +107,11 @@ export const LoginButton = ({ children, className }) => {
       
       <LoginModal 
         isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+        onClose={() => {
+          setTimeout(() => {
+            setIsModalOpen(false)
+          }, 0)
+        }} 
       />
     </>
   );
