@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import useStore from '../store/useStore';
+import useStore from '../(main)/store/useStore';
 import { posts as postsData } from '../data/posts';
 
 // Custom hook to load posts into the store

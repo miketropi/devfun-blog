@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import useDarkMode from '../hooks/useDarkMode';
-import useStore from '../store/useStore';
+import useStore from '../(main)/store/useStore';
 
 export default function CommentForm({ postId }) {
   const { darkMode } = useDarkMode();

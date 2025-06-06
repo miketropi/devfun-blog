@@ -1,4 +1,4 @@
-import ModalExample from '../components/ModalExample';
+import ModalExample from '../../components/ModalExample';
 
 export const metadata = {
   title: 'Modal Example - DevFun Blog',

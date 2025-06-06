@@ -1,4 +1,4 @@
-import { LoginButton } from '../components/LoginModal';
+import { LoginButton } from '../../components/LoginModal';
 
 export const metadata = {
   title: 'Login Example - DevFun Blog',

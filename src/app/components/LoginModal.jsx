@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Modal from './Modal';
 import LoginForm from './LoginForm';
-import useStore from '../store/useStore';
+import useStore from '../(main)/store/useStore';
 import Link from 'next/link';
 import { ChevronDown, User, LogOut } from 'lucide-react';
 

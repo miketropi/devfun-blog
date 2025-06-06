@@ -1,7 +1,6 @@
-import Layout from './components/Layout';
-import Hero from './components/Hero';
-import ArticleList from './components/ArticleList';
-import Pagination from './components/Pagination';
+import Hero from '../components/Hero';
+import ArticleList from '../components/ArticleList';
+import Pagination from '../components/Pagination';
 
 async function fetchPosts(page = 1, perPage = 3) {
   const calcReadTime = (content) => {

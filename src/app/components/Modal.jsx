@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import useStore from '../store/useStore';
+import useStore from '../(main)/store/useStore';
 
 const Modal = ({ isOpen, onClose, title, children, size = 'medium' }) => {
   const darkMode = useStore((state) => state.darkMode);

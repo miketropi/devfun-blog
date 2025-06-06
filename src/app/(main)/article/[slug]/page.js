@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import Hero from '../../components/Hero';
-import CommentForm from '../../components/CommentForm';
+import Hero from '../../../components/Hero';
+import CommentForm from '../../../components/CommentForm';
 import Link from 'next/link';
 
 async function fetchPostBySlug(slug) {

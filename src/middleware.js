@@ -11,8 +11,12 @@ export async function middleware(request) {
   const token = request.cookies.get('token')?.value;
   const refreshToken = request.cookies.get('refreshToken')?.value;
 
-  const response = NextResponse.next();
+  const buildUrl = (url = '/') => {
+    return new URL(url, request.url)
+  }
 
+  const response = NextResponse.next();
+  
   try {
     if (!token) throw new Error('No token')
     const { payload } = await jwtVerify(token, getSecretKey())
@@ -25,11 +29,11 @@ export async function middleware(request) {
     
     if (!refreshToken) {
       console.log('No refresh token → redirect home page')
-      return NextResponse.redirect(new URL('/', request.url))
+      return NextResponse.redirect(buildUrl('/'))
     }
     
     try {
-      const res = await fetch('http://localhost:3000/api/v1/refresh', {
+      const res = await fetch(`${ buildUrl('/api/v1/refresh') }`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

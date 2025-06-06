@@ -1,10 +1,9 @@
-import Layout from '../components/Layout';
-import Hero from '../components/Hero';
+import Hero from '../../components/Hero';
 
 // This is now a server component (no 'use client' directive)
 export default function About() {
   return (
-    <Layout>
+    <div>
       <Hero 
         title="About DevFun Blog" 
         subtitle="Learn more about our mission and the team behind DevFun Blog."
@@ -71,6 +70,6 @@ export default function About() {
           </p>
         </section>
       </div>
-    </Layout>
+    </div>
   );
 }
