@@ -11,9 +11,9 @@ export default function Hero({ title, subtitle }) {
           <span className="sm:hidden">{title.split(' ').slice(0, 2).join(' ')} </span>
           <span className="text-[var(--accent)]">{title.split(' ').slice(2).join(' ')}</span>
         </h2>
-        <p className="text-lg sm:text-xl opacity-80 max-w-2xl leading-relaxed">
+        <div className="text-lg sm:text-xl opacity-80 max-w-2xl leading-relaxed">
           {subtitle}
-        </p>
+        </div>
       </div>
     </section>
   );
