@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import useStore from '../(main)/store/useStore';
+import useStore from '../store/useStore';
 
 export default function useDarkMode() {
   const { darkMode, toggleDarkMode, setDarkMode } = useStore();

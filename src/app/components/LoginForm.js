@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import useDarkMode from '../hooks/useDarkMode';
-import useStore from '../(main)/store/useStore';
+import useStore from '../store/useStore';
 
 export default function LoginForm() {
   const { darkMode } = useDarkMode();
